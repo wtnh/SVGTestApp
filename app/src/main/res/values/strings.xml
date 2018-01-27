@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SVG Test App</string>
+    <string name="title_activity_web2">WebActivity2</string>
+    <string name="title_activity_web3">WebActivity3</string>
+</resources>
