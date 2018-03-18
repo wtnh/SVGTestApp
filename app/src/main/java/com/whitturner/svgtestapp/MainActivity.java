@@ -1,11 +1,16 @@
 package com.whitturner.svgtestapp;
 
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import android.widget.ImageButton;
 import android.content.Intent;
+import android.widget.Toast;
+import android.app.Activity;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//This launches the Revs Website intent activity
+//This launches the Revs Website activity
         ImageButton btn = findViewById(R.id.imageButton5);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         );
-//This launches the Revs Digital Library intent webactivity
+//This launches the Revs Digital Library activity
         ImageButton btn1 = findViewById(R.id.imageButton7);
         btn1.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -46,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
              }
         }
         );
-//This launches the Volunteer Docs intent activity
+
+//This launches the Volunteer Docs activity
         ImageButton btn2 = findViewById(R.id.imageButton6);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,9 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, WebActivity5.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
-        }
             }
+        }
         );
+
 //This launches the Training intent activity
         ImageButton btn3 = findViewById(R.id.imageButton);
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
               }
         }
         );
+
 //This launches the Tappet Clatter activity
         ImageButton btn5 = findViewById(R.id.imageButton3);
         btn5.setOnClickListener(new View.OnClickListener() {
@@ -106,34 +114,53 @@ public class MainActivity extends AppCompatActivity {
         );
 
 //This launches the Collection Info Activity
+
+
+
         ImageButton btn6 = findViewById(R.id.imageButton1);
         btn6.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Bundle bundle = new Bundle();
-                                        String url = "file:///android_asset/E-Z Guide v3 December 2015.htm";
-                                        bundle.putString("urlString", url);
-                                        Intent intent = new Intent(MainActivity.this, WebActivity5.class);
-                                        intent.putExtras(bundle);
-                                        startActivity(intent);
-                                    }
-                                }
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        String url = "file:///android_asset/index.html#!file:///android_asset/ezguidev3.epub";
+                        bundle.putString("urlString", url);
+                        Intent intent = new Intent(MainActivity.this, WebActivity5.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+        }
         );
 
-        //This launches the Calendar activity
+
+
+    //This launches the Calendar activity
         ImageButton btn7 = findViewById(R.id.imageButton2);
         btn7.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Bundle bundle = new Bundle();
-                                        String url = "https://calendar.google.com/calendar/b/2/r/month?tab=wc&pli=1&t=AKUaPmYIqjigCA9OQ8DLyfSzYjizZ7BGpCo_6XDO5i3aItUOieqgaiEeKVYe7zRHiKSy2njqvUcjqX6f6AfYBSkcC6UC4DqKtA%3D%3D";
-                                        bundle.putString("urlString", url);
-                                        Intent intent = new Intent(MainActivity.this, WebActivity5.class);
-                                        intent.putExtras(bundle);
-                                        startActivity(intent);
-                                    }
-                                }
+                    @Override
+                    public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    String url = "https://calendar.google.com/calendar/b/2/r/month?tab=wc&pli=1&t=AKUaPmYIqjigCA9OQ8DLyfSzYjizZ7BGpCo_6XDO5i3aItUOieqgaiEeKVYe7zRHiKSy2njqvUcjqX6f6AfYBSkcC6UC4DqKtA%3D%3D";
+                    bundle.putString("urlString", url);
+                    Intent intent = new Intent(MainActivity.this, WebActivity5.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    }
+        }
         );
 
-    }
-}
+//This launches the Volgistics activity
+        ImageButton btn8 = findViewById(R.id.imageButton8);
+        btn8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    String url = "https://www.volgistics.com/ex2/vicnet.dll?FROM=110030";
+                    bundle.putString("urlString", url);
+                    Intent intent = new Intent(MainActivity.this, WebActivity5.class);intent.putExtras(bundle);
+                    startActivity(intent);
+                     }
+        }
+        );
+
+
+}}

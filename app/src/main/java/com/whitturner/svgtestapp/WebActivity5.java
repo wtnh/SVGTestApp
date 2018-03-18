@@ -2,14 +2,15 @@ package com.whitturner.svgtestapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebSettings;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-//This is an attempt to build a generic web activity with URL passed in from the intent call
+//This is a generic web activity with URL passed in from the intent call
+
+//Todo: add progress bar
+//Todo: fix W/cr_BindingManager: Cannot call determinedVisibility() - never saw a connection for the pid: 15680
+//Todo: add home button to action bar
 
 public class WebActivity5 extends AppCompatActivity {
 
@@ -19,53 +20,58 @@ public class WebActivity5 extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web5);
-//        WebSettings settings = webView.getSettings();
-//        settings.setJavaScriptEnabled(true);
-//        setContentView(R.layout.asset_web_view);
+//        getActionBar().setHomeButtonEnabled(true);
         String url = super.getIntent().getExtras().getString("urlString");
         loadUrlInWebView(url);
-
-
-//        webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
-//        webView.getSettings().setBuiltInZoomControls(true);
-//        webView.getSettings().setUseWideViewPort(true);
-//        webView.getSettings().setLoadWithOverviewMode(true);
-//       final ProgressBar progressBar;
-
-//       progressBar = new ProgressBar(WebActivity5.this);
-//        progressBar.setMessage("Loading...");
-//       progressBar.setVisibility(View.VISIBLE);
     }
 
-
 // This enables the back button to go back one step in web history
+
     @Override
     public void onBackPressed() {
         if (webView.canGoBack()) {
             webView.goBack();
             return;
         }
-        // Otherwise defer to system default behavior.
+        // Otherwise go back to home screen and clear cache.
         super.onBackPressed();
+        webView.clearCache(true);
     }
 
-    private void loadUrlInWebView(String url){
+//Code to enable console logging - not sure if this is effective, so commented out
+//
+//    public boolean onConsoleMessage(android.webkit.ConsoleMessage cm) {
+//        android.util.Log.d("MyApplication", cm.message() + " -- From line "
+//                + cm.lineNumber() + " of "
+//                + cm.sourceId() );
+//        return true;
+//    }
+
+    private void loadUrlInWebView(String url) {
         webView = findViewById(R.id.webView5);
         webView.setWebViewClient(new WebViewClient());
         WebSettings settings = webView.getSettings();
         webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDomStorageEnabled(true);
         settings.setJavaScriptEnabled(true);
-
-// Need to fix progress bar code - progress bar will appear by default due to xml
-//        final ProgressBar progressBar;
-//        progressBar = new ProgressBar(WebActivity5.this);
-//        progressBar.setMessage("Loading...");
-//        progressBar.setVisibility(View.VISIBLE);
-//        public void onPageFinished(WebView view,String url){
-
+        settings.setAllowUniversalAccessFromFileURLs(true);
+        //The following will delete all old data previously used by webView prior to loading page
+        android.webkit.WebStorage.getInstance().deleteAllData();
         webView.loadUrl(url);
+    }
 
+    //Clean up cache on abnormal exit
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        webView.clearCache(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        webView.clearCache(true);
     }
 
 }

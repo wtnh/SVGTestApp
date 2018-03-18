@@ -13,6 +13,12 @@
 
     </WebView>
 
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/web_view_progress"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
     <!--Need to fix progress bar in java - this makes it appear but java has to hide it on page load-->
     <!--<ProgressBar-->
         <!--android:id="@+id/progress_bar"-->
