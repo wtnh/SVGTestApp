@@ -24,6 +24,10 @@
             android:name=".WebActivity5"
             android:configChanges="orientation|screenSize">
         </activity>
+        <activity
+            android:name=".CollectionActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

@@ -38,14 +38,6 @@ public class WebActivity5 extends AppCompatActivity {
         webView.clearCache(true);
     }
 
-//Code to enable console logging - not sure if this is effective, so commented out
-//
-//    public boolean onConsoleMessage(android.webkit.ConsoleMessage cm) {
-//        android.util.Log.d("MyApplication", cm.message() + " -- From line "
-//                + cm.lineNumber() + " of "
-//                + cm.sourceId() );
-//        return true;
-//    }
 
     private void loadUrlInWebView(String url) {
         webView = findViewById(R.id.webView5);
@@ -53,6 +45,7 @@ public class WebActivity5 extends AppCompatActivity {
         WebSettings settings = webView.getSettings();
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDomStorageEnabled(true);
+        webView.setVerticalScrollBarEnabled(true);
         settings.setJavaScriptEnabled(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         //The following will delete all old data previously used by webView prior to loading page
